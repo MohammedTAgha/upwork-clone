@@ -1,0 +1,43 @@
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #f7fafc;
+    --white-color: #ffffff;
+    --orange-color: #ff9017;
+    --green-color: #00b517;
+    --danger-color: #fa3434;
+    --facebook-color: #4267B2;
+    --gray-color: #606060;
+    --gray-200-color: #e0e0e0;
+    --gray2-200-color: #eff2f4;
+    --gray-300-color: #e3e8ee;
+    --gray-500-color: #8B96A5;
+    --gray-600-color: #505050;
+    --gray-800-color: #606060;
+    --sale-background: #ffe3e3;
+    --sale-color: #eb001b;
+    --light-blue: #e5f1ff;
+    --light2-blue: #E3F0FF;
+    --light3-blue: #D1E7FF;
+    --light4-blue: #afd0ff;
+    --dark-color: #1c1c1c;
+  }
+  
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  body {
+    background-color: var(--secondary-color);
+  }
+  
+  a {
+    text-decoration: none;
+  }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
  // Import the font name from your Fonts.js file
-const mainFont = "Helvetica Neue"
+const mainFont = "NeueMontreal-Regular"
 const BigHeading = styled.h1`
   font-family: ${mainFont};
   font-size: 2rem;

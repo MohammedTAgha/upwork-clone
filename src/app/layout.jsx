@@ -8,7 +8,6 @@ const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* provider goes here  */}
       <body>{children}</body>
     </html>
   );

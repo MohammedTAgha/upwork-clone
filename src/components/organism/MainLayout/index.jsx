@@ -1,12 +1,12 @@
 "use client";
-
+import Navigation  from '@/components/organism/navigation/'
 import React from 'react'
 
 
  const MainLayout = ({ children }) => {
   return (
     <div>
-        <div > nav</div>
+        <Navigation/>
         {children}
         <div > footer</div>
     </div>

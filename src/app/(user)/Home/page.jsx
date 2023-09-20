@@ -1,7 +1,7 @@
 "use client";
-
+import HomePage from '@/components/pages/HomePage'
 const Home = () => {
-  return (<div>HOME page</div>)
+  return (<HomePage/>)
 }
 
 export default Home;

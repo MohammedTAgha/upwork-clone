@@ -3,6 +3,8 @@ export const StyledGrid = styled.div`
   display: grid;
 `;
 export const StyledFlex = styled.div`
+  width: ${(props) => props.width || '100%'};
+  height: ${(props) => props.height || 'auto'};
   display: flex;
   justify-content: ${(props) => props.justifyContent || 'center'};
   flex-direction: ${(props) => props.flexDirection || 'row'};

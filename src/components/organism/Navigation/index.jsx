@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 const StyledNavigation = styled.nav`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
+  background-color: #fff;
+  color: #000;
+  padding: 24px;
 `;
 
 const NavLink = styled.a`
@@ -16,14 +16,17 @@ const NavLink = styled.a`
   text-decoration: none;
   padding: 10px;
   &:hover {
-    text-decoration: underline;
+    
   }
 `;
+
+``
+
 
 const Navigation = () => {
   return (
     <StyledNavigation>
-      <NavLink href="/">Home</NavLink>
+      <NavLink href="/">LOGO</NavLink>
       <NavLink href="/about">About</NavLink>
       <NavLink href="/contact">Contact</NavLink>
     </StyledNavigation>

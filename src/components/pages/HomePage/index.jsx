@@ -13,17 +13,21 @@ const StyledSidebar = styled(Box)`
   padding: 20px;
   margin-left: 20px;
 `;
-
+const StyledBox = styled(Box)`
+  width: ${(props) => props.width || '100%'};
+  border: 1px solid #ccc;
+  border-radius: ${(props) => props.borderRadius || '12px'};
+  padding: ${(props) => props.padding || '20px'};
+`;
 const HomePage = () => {
   return (
     <Box display="flex" width="77%" margin="0 auto">
       <Box width="75%" >
         {/* Main content goes here */}
         Welcome Back
-        <Box width="100%"  border="1px solid #ccc" borderRadius="12px" padding="20px">
-        {/* Main content goes here */}
+        <StyledBox>
         Main Section
-      </Box>
+      </StyledBox>
       </Box>
       <StyledSidebar>
         Sidebar

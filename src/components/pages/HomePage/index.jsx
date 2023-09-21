@@ -60,7 +60,7 @@ const HomePage = () => {
   ];
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
-    const url = `/${tab}`;
+    const url = `/${activeTab}`;
     window.history.pushState(null, null, url);
   };
 

@@ -19,7 +19,7 @@ const Heading = styled.h2`
   font-family: ${mainFont};
   font-size: 1.25rem;
   font-style: normal;
-  font-weight: ${props => props.fontWeight || 600};
+  font-weight: ${props => props.fontWeight || 500};
   color: ${props => props.color || '#001e00'};
 `;
 

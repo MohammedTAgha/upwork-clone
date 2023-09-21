@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const StyledJobCard = styled.div`
   background-color: var(--white-color);
-  border-bottom: 1px solid var(--gray-300-color);
-  padding: 30px 0px;
+  border-bottom: 2px solid #ddd;
+  padding: 30px ;
   cursor: pointer;
   position: relative;
-
+  margin-bottom:10px;
+  margin: 0 -20px;
   &:hover {
     background-color: var(--gray-300-color);
   }

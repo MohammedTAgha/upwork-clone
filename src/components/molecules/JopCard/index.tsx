@@ -14,7 +14,7 @@ import { StyledJobCard } from "./style.js";
 import React, { MouseEventHandler } from 'react';
 import { useRouter } from "next/navigation";
 import { Heading, MainHeading, Body ,SmallText} from "@/components/atoms/Typography/";
-
+import colors from '@/constants/colors.js';
 type JobCardProps = {
   title: string;
   fixedPrice: string;
@@ -59,7 +59,7 @@ const JobCard = ({
           </StyledFlexCenter>
         </StyledAlignFlex>
       </StyledBetweenAlignFlex>
-      <SmallText>
+      <SmallText color={colors.gray600Color}>
       Hourly: $15-$30 - Expert - Est. Time: Less than 1 month, Less than 30 hrs/week - Posted 27 minutes ago
       </SmallText>
       <span className="fixedprice">{fixedPrice}</span>

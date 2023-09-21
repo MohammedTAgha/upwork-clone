@@ -1,18 +1,20 @@
 "use client";
 import { Heading, MainHeading, Body } from "@/components/atoms/Typography/";
 import Search from "./components/molecules/SearchBar";
-import JobCard from '@/components/molecules/JopCard'
+import JobCard from "@/components/molecules/JopCard";
 import { StyledFlex } from "@/styles/common";
 import styled from "styled-components";
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import { AntTabs, AntTab } from "@/components/molecules/Tabs";
-import jobData from "@/db/jobs"
+import jobData from "@/db/jobs";
+import { Avatar } from "@mui/material";
+import colors from "@/constants/colors";
 const StyledSidebar = styled(Box)`
   width: 25%;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 20px;
+  ${'' /* border: 1px solid #ccc; */}
+
+  ${'' /* padding: 20px; */}
   margin-left: 20px;
 `;
 const StyledBox = styled(Box)`
@@ -85,20 +87,30 @@ const HomePage = () => {
               <AntTab key={tab.value} value={tab.value} label={tab.label} />
             ))}
           </AntTabs>
-            
-          {jobData.map((job) => (
-        <JobCard key={job.jobsId} {...job} />
-        ))}
 
-          {/* Render jobs based on the selected tab */}
-          {/* Replace the example job data with your actual job data */}
-          {/* <Job title="Job 1" description="Description for Job 1" />
-      <Job title="Job 2" description="Description for Job 2" />
-      <Job title="Job 3" description="Description for Job 3" /> */}
-          {/* ... Add more jobs based on your data */}
+          {jobData.map((job) => (
+            <JobCard key={job.jobsId} {...job} />
+          ))}
         </StyledBox>
       </StyledFlex>
-      <StyledSidebar>Sidebar</StyledSidebar>
+      <StyledSidebar>
+      <StyledBox>
+      <StyledFlex flexDirection='column' >
+        <Avatar
+                alt="user name"
+                src="assets/images/avatar.jpg"
+                sx={{ width: 56, height: 56 }}
+                />
+        <Heading>
+            Mohammed . T
+        </Heading>
+        <Body color={colors.gray600Color}>
+        Full stack developer 
+        </Body>
+        </StyledFlex>
+      </StyledBox>
+      
+      </StyledSidebar>
     </Box>
   );
 };

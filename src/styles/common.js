@@ -1,7 +1,21 @@
 import styled from "styled-components";
+import Box from "@mui/material/Box";
 export const StyledGrid = styled.div`
   display: grid;
 `;
+
+export const StyledBox = styled(Box)`
+width: ${(props) => props.width || "100%"};
+border: 1px solid #ccc;
+border-radius: ${(props) => props.borderRadius || "12px"};
+padding: ${(props) => props.padding || "20px"};
+`;
+
+export const StyledSidebar = styled(Box)`
+width: 25%;
+margin-left: 20px;
+`;
+
 export const StyledFlex = styled.div`
   width: ${(props) => props.width || '100%'};
   height: ${(props) => props.height || 'auto'};

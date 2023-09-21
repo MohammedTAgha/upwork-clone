@@ -1,12 +1,13 @@
 "use client";
 import { Heading, MainHeading, Body } from "@/components/atoms/Typography/";
 import Search from "./components/molecules/SearchBar";
+import JobCard from '@/components/molecules/JopCard'
 import { StyledFlex } from "@/styles/common";
 import styled from "styled-components";
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import { AntTabs, AntTab } from "@/components/molecules/Tabs";
-
+import jobData from "@/db/jobs"
 const StyledSidebar = styled(Box)`
   width: 25%;
   border: 1px solid #ccc;
@@ -84,6 +85,10 @@ const HomePage = () => {
               <AntTab key={tab.value} value={tab.value} label={tab.label} />
             ))}
           </AntTabs>
+            
+          {jobData.map((job) => (
+        <JobCard key={job.jobsId} {...job} />
+        ))}
 
           {/* Render jobs based on the selected tab */}
           {/* Replace the example job data with your actual job data */}

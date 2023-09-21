@@ -10,6 +10,8 @@ export const StyledFlex = styled.div`
   flex-direction: ${(props) => props.flexDirection || 'row'};
   align-items: ${(props) => props.alignItems || 'center'};
   flex-wrap: ${(props) => (props.flexWrap ? 'wrap' : 'nowrap')};
+  row-gap: ${(props) => props.rowGap || '0px'};
+  column-gap: ${(props) => props.columnGap || '0px'};
 `;
 
 export const Container = styled.div`

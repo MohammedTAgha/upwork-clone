@@ -5,7 +5,7 @@ import {StyledFlex } from '@/styles/common'
 import styled from "styled-components";
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-
+import { AntTabs, AntTab } from '@/components/molecules/Tabs';
 
 const StyledSidebar = styled(Box)`
   width: 25%;
@@ -51,11 +51,19 @@ return (
 );
 };
 
-
 // taps end
 const HomePage = () => {
     const [activeTab, setActiveTab] = useState('myFeed');
-
+    const tabsData = [
+        { label: 'My Feed', value: 'best-matches' },
+        { label: 'Most Recent', value: 'most-recent' },
+        { label: 'Saved Jobs', value: 'saved-jobs' },
+      ];
+    const handleTabChange = (event, newValue) => {
+        setActiveTab(newValue);
+        // Add logic to fetch and display jobs based on the selected tab
+      };
+    
     const handleTabClick = (tab) => {
         setActiveTab(tab);
         const url = `/nx/find-work/${tab}`;
@@ -74,18 +82,12 @@ const HomePage = () => {
         </Heading>
         {/* taps selector (my feed , most recrnt , Saved Jops) */}
         {/* here show the jops (<Job />) */}
-        <StyledBox>
-      <TabsContainer>
-        <Tab active={activeTab === 'myFeed'} onClick={() => handleTabClick('best-matches')}>
-          My Feed
-        </Tab>
-        <Tab active={activeTab === 'mostRecent'} onClick={() => handleTabClick('most-recent')}>
-          Most Recent
-        </Tab>
-        <Tab active={activeTab === 'savedJobs'} onClick={() => handleTabClick('saved-jobs')}>
-          Saved Jobs
-        </Tab>
-      </TabsContainer>
+        
+        <AntTabs value={activeTab} onChange={handleTabChange}>
+        {tabsData.map((tab) => (
+          <AntTab key={tab.value} value={tab.value} label={tab.label} />
+        ))}
+      </AntTabs>
 
       {/* Render jobs based on the selected tab */}
       {/* Replace the example job data with your actual job data */}
@@ -93,7 +95,7 @@ const HomePage = () => {
       <Job title="Job 2" description="Description for Job 2" />
       <Job title="Job 3" description="Description for Job 3" /> */}
       {/* ... Add more jobs based on your data */}
-    </StyledBox>
+    
       </StyledBox>
       </StyledFlex>
       <StyledSidebar>

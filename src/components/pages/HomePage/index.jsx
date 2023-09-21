@@ -1,9 +1,9 @@
 "use client";
-import {Heading} from '@/components/atoms/Typography/';
+import {Heading,MainHeading ,Body} from '@/components/atoms/Typography/';
 import Search from './components/molecules/SearchBar'
-import {StyledFlex} from '@/styles/common'
+import {StyledFlex } from '@/styles/common'
 import styled from "styled-components";
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 
 
@@ -20,19 +20,86 @@ const StyledBox = styled(Box)`
   border-radius: ${(props) => props.borderRadius || '12px'};
   padding: ${(props) => props.padding || '20px'};
 `;
+
+
+// taps 
+
+const TabsContainer = styled.div`
+display: flex;
+margin-bottom: 10px;
+`;
+
+const Tab = styled.div`
+padding: 10px 20px;
+cursor: pointer;
+border: 1px solid #ccc;
+border-radius: 6px;
+margin-right: 10px;
+${(props) =>
+  props.active &&
+  `
+  background-color: #f0f0f0;
+`}
+`;
+
+const Job = ({ title, description }) => {
+return (
+  <div>
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+);
+};
+
+
+// taps end
 const HomePage = () => {
+    const [activeTab, setActiveTab] = useState('myFeed');
+
+    const handleTabClick = (tab) => {
+        setActiveTab(tab);
+        const url = `/nx/find-work/${tab}`;
+        window.history.pushState(null, null, url);
+      };
+
   return (
     <Box display="flex" width="77%" margin="0 auto">
       <StyledFlex flexDirection="column" rowGap='12px' alignItems="normal"  width="75%" >
         {/* Main content goes here */}
-        Welcome Back
+        
         <Search/>
         <StyledBox>
-        Main Section
+        <Heading>
+        Jobs you might like
+        </Heading>
+        {/* taps selector (my feed , most recrnt , Saved Jops) */}
+        {/* here show the jops (<Job />) */}
+        <StyledBox>
+      <TabsContainer>
+        <Tab active={activeTab === 'myFeed'} onClick={() => handleTabClick('best-matches')}>
+          My Feed
+        </Tab>
+        <Tab active={activeTab === 'mostRecent'} onClick={() => handleTabClick('most-recent')}>
+          Most Recent
+        </Tab>
+        <Tab active={activeTab === 'savedJobs'} onClick={() => handleTabClick('saved-jobs')}>
+          Saved Jobs
+        </Tab>
+      </TabsContainer>
+
+      {/* Render jobs based on the selected tab */}
+      {/* Replace the example job data with your actual job data */}
+      {/* <Job title="Job 1" description="Description for Job 1" />
+      <Job title="Job 2" description="Description for Job 2" />
+      <Job title="Job 3" description="Description for Job 3" /> */}
+      {/* ... Add more jobs based on your data */}
+    </StyledBox>
       </StyledBox>
       </StyledFlex>
       <StyledSidebar>
+      
         Sidebar
+        
       </StyledSidebar>
     </Box>
   );

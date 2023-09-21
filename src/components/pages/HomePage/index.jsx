@@ -1,5 +1,6 @@
 "use client";
 import {Heading} from '@/components/atoms/Typography/';
+import Search from './components/molecules/SearchBar'
 import {StyledFlex} from '@/styles/common'
 import styled from "styled-components";
 import React from 'react';
@@ -22,13 +23,14 @@ const StyledBox = styled(Box)`
 const HomePage = () => {
   return (
     <Box display="flex" width="77%" margin="0 auto">
-      <Box width="75%" >
+      <StyledFlex flexDirection="column" rowGap='12px' alignItems="normal"  width="75%" >
         {/* Main content goes here */}
         Welcome Back
+        <Search/>
         <StyledBox>
         Main Section
       </StyledBox>
-      </Box>
+      </StyledFlex>
       <StyledSidebar>
         Sidebar
       </StyledSidebar>

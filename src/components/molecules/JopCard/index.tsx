@@ -13,6 +13,7 @@ import Link from "next/link";
 import { StyledJobCard } from "./style.js";
 import React, { MouseEventHandler } from 'react';
 import { useRouter } from "next/navigation";
+import { Heading, MainHeading, Body ,SmallText} from "@/components/atoms/Typography/";
 
 type JobCardProps = {
   title: string;
@@ -46,8 +47,9 @@ const JobCard = ({
     <StyledJobCard onClick={() => router.push(`/jobs/${jobsId}`)}>
       <StyledBetweenAlignFlex gap="10px">
         <Link href="#">
-          <h4>{title}</h4>
+          <Heading hover>{title}</Heading>
         </Link>
+
         <StyledAlignFlex gap="5px">
           <StyledFlexCenter as="button">
             <ThumbDownOffAltIcon fontSize="small" />
@@ -57,7 +59,10 @@ const JobCard = ({
           </StyledFlexCenter>
         </StyledAlignFlex>
       </StyledBetweenAlignFlex>
-      <span className="fixed">{fixedPrice}</span>
+      <SmallText>
+      Hourly: $15-$30 - Expert - Est. Time: Less than 1 month, Less than 30 hrs/week - Posted 27 minutes ago
+      </SmallText>
+      <span className="fixedprice">{fixedPrice}</span>
       <span className="hourly">{hourly}</span>
       <p>{description}</p>
       <StyledAlignFlex gap="5px" className="skills">

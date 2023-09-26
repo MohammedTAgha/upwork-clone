@@ -19,6 +19,8 @@ import PsychologyIcon from '@mui/icons-material/Psychology';
 import SectionContainer from './Components/Atoms/SectionContainer'
 import Typography  from '@mui/material/Typography';
 import ChipsGrupe from '@/components/molecules/ChipsGrupe'
+import Button from '@mui/material-next/Button';
+
 const Container = styled(Box)`
   border: 1px solid #ccc;
   width: 100%;
@@ -37,10 +39,15 @@ const RightBox = styled(Box)`
   width: 25%;
   padding: 20px;
 `;
+const buttonStyle = {
+  backgroundColor: '#108a00',
+  color: 'white',       // Set text color to white
+  textAlign: 'center',
+  margin : '6px auto'  // Center align the text
+};
 
 
-
-const Job = () => {
+const JobPage = () => {
   return (
     <Container>
       <LeftBox>
@@ -108,13 +115,29 @@ const Job = () => {
         </SectionContainer>
 
       </LeftBox>
-
-
       <RightBox>
-      
+
+      <Button
+  color="primary"
+  disabled={false}
+  size="large"
+  style={buttonStyle}
+  
+>
+  Apply now 
+</Button>
+   <Button
+  color="primary"
+  disabled={false}
+  size="large"
+  style={buttonStyle}
+  
+>
+  Save Job
+</Button>
       </RightBox>
     </Container>
   );
 };
 
-export default Job;
+export default JobPage;

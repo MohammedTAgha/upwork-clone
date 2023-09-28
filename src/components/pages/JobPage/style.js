@@ -16,3 +16,23 @@ border: 1px solid #ccc;
 border-radius : 0px 12px 12px 0px;
 padding: ${(props) => props.padding || "20px"};
 `
+
+export const ApplyButtonStyle = {
+    backgroundColor: '#108a00',
+    color: 'white',       
+    textAlign: 'center',
+    margin : '4px 0',
+    fontFamily:'NeueMontreal-Regular',
+    height:'40px',
+    width:'100%',
+  };
+
+  export const SaveJobButtonStyle = {
+    
+    color: '#108a00',       
+    textAlign: 'center',
+    margin : '4px 0',
+    fontFamily:'NeueMontreal-Regular',
+    height:'40px',
+    width:'100%',
+  };

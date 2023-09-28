@@ -15,12 +15,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import SellIcon from "@mui/icons-material/Sell";
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import SectionContainer from './Components/Atoms/SectionContainer'
-import Typography  from '@mui/material/Typography';
-import ChipsGrupe from '@/components/molecules/ChipsGrupe'
-// import Button from '@mui/material-next/Button';
-import Button from '@mui/material/Button';
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import SectionContainer from "./Components/Atoms/SectionContainer";
+import Typography from "@mui/material/Typography";
+import ChipsGrupe from "@/components/molecules/ChipsGrupe";
+import Button from "@mui/material-next/Button";
+import { ApplyButtonStyle ,SaveJobButtonStyle } from "./style.js";
+// import Button from '@mui/material/Button';
 
 const Container = styled(Box)`
   border: 1px solid #ccc;
@@ -40,104 +41,104 @@ const RightBox = styled(Box)`
   width: 25%;
   padding: 20px;
 `;
-const buttonStyle = {
-  backgroundColor: '#108a00',
-  color: 'white',       
-  textAlign: 'center',
-  margin : '6px auto',
-  fontFamily:'NeueMontreal-Regular'
-
-};
-
 
 const JobPage = () => {
   return (
     <Container>
       <LeftBox>
-     
         <Heading>Configure NodeJS app with Google Auth</Heading>
         <Body hover>Full Stack Development</Body>
         <SmallText color={colors.gray600Color}>Posted 11 hours ago</SmallText>
         <IconWithText text={"Worldwide"} icon={<WhereToVoteIcon />} />
         <Divider width="100%" />
         <SectionContainer>
-        <Body>
-          I need someone to help me configure an existing webapp using ReactJS
-          (frontend), NodeJS (backend), GoogleAPI (authentication) and MongoDB
-          (database). I'm trying to have it running in a VM (Azure) and to use a
-          domain name.
-        </Body>
+          <Body>
+            I need someone to help me configure an existing webapp using ReactJS
+            (frontend), NodeJS (backend), GoogleAPI (authentication) and MongoDB
+            (database). I'm trying to have it running in a VM (Azure) and to use
+            a domain name.
+          </Body>
         </SectionContainer>
         <SectionContainer>
-        <Body fontWeight={"300"}>
-          Expensify is a team of generalists developing today's leading expense
-          management tool. Maintaining our reputation as an innovative leader in
-          the world of finance requires an incredibly reliable and secure system
-          for processing financial transactions. Accordingly, we primarily
-          leverage time-tested languages, but we're looking to unify our
-          front-end across platforms. For this, we're leveraging React Native
-          and are looking toward the community on Upwork to help solve a variety
-          of problems, both big and small, related to this migration.
-        </Body>
+          <Body fontWeight={"300"}>
+            Expensify is a team of generalists developing today's leading
+            expense management tool. Maintaining our reputation as an innovative
+            leader in the world of finance requires an incredibly reliable and
+            secure system for processing financial transactions. Accordingly, we
+            primarily leverage time-tested languages, but we're looking to unify
+            our front-end across platforms. For this, we're leveraging React
+            Native and are looking toward the community on Upwork to help solve
+            a variety of problems, both big and small, related to this
+            migration.
+          </Body>
         </SectionContainer>
 
         <SectionContainer>
-        <Stack direction="row" spacing={1}>
-          <ListItem sx={{maxWidth:'220px'}} >
-            <SellIcon fontSize="small" sx={{ marginRight: "8px" }} />
-            <ListItemText primary="$100.00" secondary="Fixed-price" />
-          </ListItem>
+          <Stack direction="row" spacing={1}>
+            <ListItem sx={{ maxWidth: "220px" }}>
+              <SellIcon fontSize="small" sx={{ marginRight: "8px" }} />
+              <ListItemText primary="$100.00" secondary="Fixed-price" />
+            </ListItem>
 
-          <ListItem sx={{maxWidth:'220px'}}>
-            <PsychologyIcon fontSize="small" sx={{ marginRight: "8px" }} />
-            <ListItemText primary="Intermediate" secondary="I am looking for a mix of experience and value" />
-          </ListItem>
-        </Stack>
-        </SectionContainer>
-        
-        <SectionContainer>
-        <Typography variant="body2" gutterBottom>
-         Project Type:  One-time project  
-        </Typography>
+            <ListItem sx={{ maxWidth: "220px" }}>
+              <PsychologyIcon fontSize="small" sx={{ marginRight: "8px" }} />
+              <ListItemText
+                primary="Intermediate"
+                secondary="I am looking for a mix of experience and value"
+              />
+            </ListItem>
+          </Stack>
         </SectionContainer>
 
         <SectionContainer>
-        <Typography variant="h6" >
-        Skills and Expertise
-        </Typography>
-        <ChipsGrupe list={['react' ,'node js']}/>
+          <Typography variant="body2" gutterBottom>
+            Project Type: One-time project
+          </Typography>
         </SectionContainer>
 
         <SectionContainer>
-        <Typography variant="h6" >
-        Activity on this job
-        </Typography>
-        <Typography variant="caption" display="block" gutterBottom>
-        Proposals:  15 to 20
-        </Typography>   
+          <Typography variant="h6">Skills and Expertise</Typography>
+          <ChipsGrupe list={["react", "node js"]} />
         </SectionContainer>
 
+        <SectionContainer>
+          <Typography variant="h6">Activity on this job</Typography>
+          <Typography variant="caption" display="block" gutterBottom>
+            Proposals: 15 to 20
+          </Typography>
+        </SectionContainer>
       </LeftBox>
       <RightBox>
-
-      <Button
-      variant="contained"
-  // outlined
-  // disabled={false}
-  // size="large"
-  // style={buttonStyle}
-  
->
-  Apply now 
-</Button>
-   <Button
-
-  size="large"
-  style={buttonStyle}
-  
->
-  Save Job
-</Button>
+      <SectionContainer>
+        <Button style={ApplyButtonStyle}>Apply now</Button>
+        <Button style={SaveJobButtonStyle} variant="outlined">
+        <WhereToVoteIcon />
+          Save Job
+        </Button>
+        <Body hover>
+        <WhereToVoteIcon />
+        Flag as inappator 
+        </Body>
+        <Typography variant="caption">
+        Send a proposal for: 16 Connects 
+        </Typography>
+        <br></br>
+        <Typography variant="caption">
+        Available Connects: 160
+        </Typography>
+        </SectionContainer>
+        <SectionContainer>
+        <Typography variant="p">
+        About the client <br></br>
+        </Typography>
+        <Typography variant="caption">
+        About the client
+        </Typography>
+        <ListItemText primary="Turkey" secondary="Izmir 2:34 pm" />
+        <ListItemText  primary="70 jobs posted" secondary="69% hire rate, 2 open jobs" />
+        <ListItemText  primary="$19K total spent  " secondary="97 hires, 29 active" />
+        <ListItemText  primary="Sales & Marketing  " secondary="Member since Jun 12, 2020" />
+        </SectionContainer>
       </RightBox>
     </Container>
   );

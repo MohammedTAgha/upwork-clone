@@ -16,7 +16,7 @@ const BigHeading = styled.h1`
   font-style: normal;
   font-weight: ${props => props.fontWeight || 700};
   color: ${({ color }) => color || defaultColor};
-  ${({ hover }) => hover && `&:hover { color: ${hoverColor}; text-decoration: underline; }`}
+  ${({ hover }) => hover && `&:hover {  color: ${hoverColor}; text-decoration: underline; cursor:pointer; }`}
   ${baseTypographyStyles}
 `;
 
@@ -26,7 +26,7 @@ const MainHeading = styled.h1`
   font-style: normal;
   font-weight: ${props => props.fontWeight || 400};
   color: ${({ color }) => color || defaultColor};
-  ${({ hover }) => hover && `&:hover { color: ${hoverColor}; text-decoration: underline; }`}
+  ${({ hover }) => hover && `&:hover {  color: ${hoverColor}; text-decoration: underline; cursor:pointer; }`}
   ${baseTypographyStyles}
 `;
 
@@ -36,7 +36,7 @@ const Heading = styled.h2`
   font-style: normal;
   font-weight: ${props => props.fontWeight || 500};
   color: ${({ color }) => color || defaultColor};
-  ${({ hover }) => hover && `&:hover { color: ${hoverColor}; text-decoration: underline; }`}
+  ${({ hover }) => hover && `&:hover {  color: ${hoverColor}; text-decoration: underline; cursor:pointer; }`}
   ${baseTypographyStyles}
 `;
 
@@ -46,7 +46,7 @@ const Body = styled.p`
   font-style: normal;
   font-weight: ${props => props.fontWeight || 500};
   color: ${({ color }) => color || defaultColor};
-  ${({ hover }) => hover && `&:hover { color: ${hoverColor}; text-decoration: underline; }`}
+  ${({ hover }) => hover && `&:hover {  color: ${hoverColor}; text-decoration: underline; cursor:pointer; }`}
   ${baseTypographyStyles}
 `;
 
@@ -56,7 +56,7 @@ const SmallText = styled.span`
   font-style: normal;
   font-weight: ${props => props.fontWeight || 400};
   color: ${({ color }) => color || defaultColor};
-  ${({ hover }) => hover && `&:hover { color: ${hoverColor}; text-decoration: underline; }`}
+  ${({ hover }) => hover && `&:hover {  color: ${hoverColor}; text-decoration: underline; cursor:pointer; }`}
   ${baseTypographyStyles}
 `;
 
@@ -66,7 +66,7 @@ const TitleH4 = styled.h4`
   font-style: normal;
   font-weight: ${props => props.fontWeight || 600};
   color: ${({ color }) => color || defaultColor};
-  ${({ hover }) => hover && `&:hover { color: ${hoverColor}; text-decoration: underline; }`}
+  ${({ hover }) => hover && `&:hover {  color: ${hoverColor}; text-decoration: underline; cursor:pointer; }`}
   ${baseTypographyStyles}
 `;
 

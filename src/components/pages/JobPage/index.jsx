@@ -19,7 +19,8 @@ import PsychologyIcon from '@mui/icons-material/Psychology';
 import SectionContainer from './Components/Atoms/SectionContainer'
 import Typography  from '@mui/material/Typography';
 import ChipsGrupe from '@/components/molecules/ChipsGrupe'
-import Button from '@mui/material-next/Button';
+// import Button from '@mui/material-next/Button';
+import Button from '@mui/material/Button';
 
 const Container = styled(Box)`
   border: 1px solid #ccc;
@@ -41,9 +42,11 @@ const RightBox = styled(Box)`
 `;
 const buttonStyle = {
   backgroundColor: '#108a00',
-  color: 'white',       // Set text color to white
+  color: 'white',       
   textAlign: 'center',
-  margin : '6px auto'  // Center align the text
+  margin : '6px auto',
+  fontFamily:'NeueMontreal-Regular'
+
 };
 
 
@@ -118,17 +121,17 @@ const JobPage = () => {
       <RightBox>
 
       <Button
-  color="primary"
-  disabled={false}
-  size="large"
-  style={buttonStyle}
+      variant="contained"
+  // outlined
+  // disabled={false}
+  // size="large"
+  // style={buttonStyle}
   
 >
   Apply now 
 </Button>
    <Button
-  color="primary"
-  disabled={false}
+
   size="large"
   style={buttonStyle}
   

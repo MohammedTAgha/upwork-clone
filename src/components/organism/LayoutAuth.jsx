@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 const LayoutAuth = () => {
 //   const { role } = useAuthContext();
-const role ="USEwR" 
+const role ="USER" 
   const router = useRouter();
 
   useEffect(() => {

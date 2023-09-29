@@ -25,6 +25,7 @@ export const ApplyButtonStyle = {
     fontFamily:'NeueMontreal-Regular',
     height:'40px',
     width:'100%',
+    padding : ' 0 15px'
   };
 
   export const SaveJobButtonStyle = {
@@ -35,4 +36,7 @@ export const ApplyButtonStyle = {
     fontFamily:'NeueMontreal-Regular',
     height:'40px',
     width:'100%',
+    padding : ' 0 15px',
+    marginBottom:'24px'
+  
   };

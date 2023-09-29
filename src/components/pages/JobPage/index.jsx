@@ -11,6 +11,8 @@ import {
 import colors from "@/constants/colors";
 import IconWithText from "./Components/Atoms/TextWithIcon";
 import WhereToVoteIcon from "@mui/icons-material/WhereToVote";
+import TourIcon from '@mui/icons-material/Tour';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
@@ -32,13 +34,13 @@ const Container = styled(Box)`
 `;
 3;
 const LeftBox = styled(Box)`
-  width: 75%;
+  width: 70%;
   border-right: 1px solid #ccc;
   padding: 20px;
 `;
 
 const RightBox = styled(Box)`
-  width: 25%;
+  width: 30%;
   padding: 20px;
 `;
 
@@ -111,12 +113,12 @@ const JobPage = () => {
       <RightBox>
       <SectionContainer>
         <Button style={ApplyButtonStyle}>Apply now</Button>
-        <Button style={SaveJobButtonStyle} variant="outlined">
-        <WhereToVoteIcon />
+        <Button style={SaveJobButtonStyle} variant="outlined" >
+        <FavoriteBorderOutlinedIcon />
           Save Job
         </Button>
         <Body hover>
-        <WhereToVoteIcon />
+        <TourIcon />
         Flag as inappator 
         </Body>
         <Typography variant="caption">

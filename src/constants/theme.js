@@ -4,15 +4,15 @@ const { createTheme } = require("@mui/material");
 import { fontSizes, fonts, lightColors, media } from "./style";
 // Define your custom color variables
 export const customColors = {
-  primary: '#108a00',
-  secondary: '#f7fafc',
+  primary: "#108a00",
+  secondary: "#f7fafc",
   // ... add other colors here
 };
 
 // Create a custom theme using the provided font family and color variables
 export const theme = createTheme({
   typography: {
-    fontFamily: 'NeueMontreal-Regular', // Use your desired font family
+    fontFamily: "NeueMontreal-Regular", // Use your desired font family
   },
   fontsize: fontSizes,
   palette: {
@@ -26,8 +26,6 @@ export const theme = createTheme({
   },
 });
 
-
-
 // const { createTheme } = require("@mui/material");
 
 // export const theme = createTheme({
@@ -36,5 +34,3 @@ export const theme = createTheme({
 //   fontsize: fontSizes,
 //   media: media,
 // });
-
-

@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-  font-family: 'NeueMontreal-Regular';
-  src: url('/assets/fonts/NeueMontreal-Regular.otf') format('opentype');
-  
+  font-family: "NeueMontreal-Regular";
+  src: url("/assets/fonts/NeueMontreal-Regular.otf") format("opentype");
 }
 :root {
   --primary-color: #108a00;
@@ -22,7 +21,7 @@
   --gray-200-color: #e0e0e0;
   --gray2-200-color: #eff2f4;
   --gray-300-color: #e3e8ee;
-  --gray-500-color: #8B96A5;
+  --gray-500-color: #8b96a5;
   --gray-600-color: #505050;
   --gray-800-color: #606060;
   --dark-color: #001e00;
@@ -42,5 +41,5 @@
 } */
 
 body {
-  font-family: 'NeueMontreal-Regular';
+  font-family: "NeueMontreal-Regular";
 }

@@ -1,12 +1,15 @@
+"use client";
 import SideBar from './components/SideBar';
 import PageContainer from './components/PageContainer'
 import { Box, styled } from "@mui/material";
 import { StyledFlex,StyledBox,StyledSidebar } from "@/styles/common";
 import { AntTabs, AntTab } from "@/components/molecules/Tabs";
+import React, { useState } from "react";
+
 const StyledSearchPageContainer=styled(Box)`
    display: flex;
    margin:0 auto;
-   padding:40px 30px;
+   padding:16px 30px;
    /* align-items:center; */
    /* justify-content:center; */
 
@@ -37,7 +40,29 @@ const StyledSearchContainer=styled(Box)`
   width:75%;
   padding :15px;
 `
+const SearchComponent = () => <div>This is the Search component content</div>;
+const SavedJobsComponent = () => <div>This is the Saved Jobs component content</div>;
+
 const SearchPage = () => {
+  const tabsData = [
+    { label: "Search", value: "Search", component: SearchComponent },
+    { label: "Saved Jobs", value: "saved-jobs", component: SavedJobsComponent },
+  ];
+  const [activeTab, setActiveTab] = useState("Search");
+
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
+    // const url = `/${activeTab}`;
+    // window.history.pushState(null, null, url);
+  };
+
+  const getComponentForTab = (tabValue) => {
+    const selectedTab = tabsData.find((tab) => tab.value === tabValue);
+    return selectedTab ? selectedTab.component : null;
+  };
+
+  const SelectedComponent = getComponentForTab(activeTab);
+
     return (
       <>
       <StyledSearchPageContainer>
@@ -48,10 +73,10 @@ const SearchPage = () => {
         <StyledBox >
         <AntTabs value={activeTab} onChange={handleTabChange}>
             {tabsData.map((tab) => (
-              <AntTab key={tab.value} value={tab.value} label={tab.label} />
+              <AntTab key={tab.value} value={tab.value} label={tab.label}  />
             ))}
           </AntTabs>
-
+          {SelectedComponent && <SelectedComponent />}     
 
         </StyledBox>
         </StyledSearchContainer>

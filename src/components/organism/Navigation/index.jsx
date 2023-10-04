@@ -6,6 +6,11 @@ import {StyledFlex} from '@/styles/common/'
 import Avatar from'@/components/atoms/Avatar'
 import Logo from '@/components/atoms/Logo';
 import NavSearch from '@/components/molecules/NavSearch';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import NavigationIcon from '@mui/icons-material/Navigation';
+import WidgetsIcon from '@mui/icons-material/Widgets';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+
 // import logopng from 'upwork.png'
 const StyledNavigation = styled.nav`
   height:64px;
@@ -46,7 +51,11 @@ const Navigation = () => {
       </StyledFlex>
       <StyledFlex justifyContent='flex-end'>
       <NavSearch/>
-     <Avatar size={'sm'}/>
+     <QuestionMarkIcon/>
+     <NotificationsIcon/>
+     <WidgetsIcon/>
+     <NavigationIcon/>
+
      <Avatar size={'sm'}/>
      <Avatar size={'sm'}/>
      <Avatar size={'sm'}/>

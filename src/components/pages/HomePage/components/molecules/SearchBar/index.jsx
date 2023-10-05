@@ -4,24 +4,12 @@ import { Input } from "@mui/joy";
 import { Box } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from 'next/navigation';
-const Search = ({ width }) => {
+const Search = ({ width , handleInputChange, handleSearch }) => {
 
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
 
-  const handleInputChange = (event) => {
-    console.log('ch')
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSearch = () => {
-    console.log('test')
-    // Navigate to the search page with the search query as a prop
-    router.push({
-      pathname: '/search',
-      query: { q: searchQuery }, // Pass the search query as a query parameter
-    });
-  };
+  
 
   return (
     <Box width={width || '100%'}>
@@ -50,6 +38,7 @@ const Search = ({ width }) => {
         }}
         placeholder="Search for job"
         onChange={handleInputChange}
+        
         endDecorator={<SearchIcon onClick={handleSearch} />}
         
       />

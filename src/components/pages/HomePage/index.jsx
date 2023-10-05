@@ -15,9 +15,24 @@ import SideBar from './components/organisim/SideBar';
 import JobDetailsDrower from '@/components/pages/JobDetailsDrower'
 import useJobData from '@/hooks/useApi';
 import JobList from 'src/components/common/JobList/index';
-const HomePage = () => {
-  const { jobData, loading, error } = useJobData();
+import { useRouter } from 'next/navigation';
 
+
+const HomePage = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+   const router = useRouter(); 
+  const handleSearch = () => {
+   
+    router.push(`/Search?query=${searchQuery}`);  // Change 'query' to 'searchQuery'
+    // Handle the search logic here, e.g., navigate to a search page with the query
+    console.log('Search query:', searchQuery);
+  };
+
+  const { jobData, loading, error } = useJobData();
+ 
   console.log(jobData)
   const [activeTab, setActiveTab] = useState("myFeed");
   const tabsData = [
@@ -54,7 +69,8 @@ const HomePage = () => {
         width="75%"
       >
         {/* Main content goes here */}
-        <Search />
+        <Search   handleInputChange={handleInputChange}
+          handleSearch={handleSearch}/>
         <StyledBox>
           <Heading>Jobs you might like</Heading>
           {/* taps selector (my feed , most recrnt , Saved Jops) */}

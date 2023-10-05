@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledJobCard = styled.div`
   background-color: var(--white-color);
   border-bottom: 2px solid #ddd;
+  padding-top:0;
   padding: 30px ;
   cursor: pointer;
   position: relative;

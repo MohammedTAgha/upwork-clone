@@ -1,0 +1,41 @@
+.google {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.login_button {
+  font-size: 15px;
+  line-height: 39px;
+  letter-spacing: 0.6px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.line {
+  overflow: hidden;
+  text-align: center;
+  width: 370px;
+  color: #5e6d55;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  padding-bottom: 2rem;
+}
+.line::before,
+.line::after {
+  background-color: #8f8e8e;
+  content: '';
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+.line:before {
+  right: 10px;
+  margin-left: -50%;
+}
+.line:after {
+  left: 10px;
+  margin-right: -50%;
+}

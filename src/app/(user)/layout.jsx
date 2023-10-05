@@ -1,3 +1,4 @@
+"use client";
 import MainLayout from "@/components/organism/MainLayout";
 
 export const metadata = {

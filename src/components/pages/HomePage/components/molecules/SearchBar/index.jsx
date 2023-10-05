@@ -3,9 +3,9 @@ import { Input } from "@mui/joy";
 import { Box } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const Search = () => {
+const Search = ({ width }) => {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box width={width || '100%'}>
       <Input
         autoFocus={false}
         className="input-group"

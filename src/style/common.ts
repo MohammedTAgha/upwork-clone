@@ -10,7 +10,7 @@ type Props = {
 
 export const StyledPage = styled.div<Props>`
   width: ${(props) => props.width};
-  min-height: 100vh;
+  // min-height: 100vh;
   margin-top: 40px;
 `;
 

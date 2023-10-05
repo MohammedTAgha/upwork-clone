@@ -6,12 +6,13 @@ import { StyledFlex,StyledBox,StyledSidebar } from "@/styles/common";
 import styled from "styled-components";
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
+import Drawer from '@mui/material/Drawer';
 import { AntTabs, AntTab } from "@/components/molecules/Tabs";
 import jobData from "@/db/jobs";
 import { Avatar } from "@mui/material";
 import colors from "@/constants/colors";
 import SideBar from './components/organisim/SideBar';
-
+import JobDetailsDrower from '@/components/pages/JobDetailsDrower'
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState("myFeed");
   const tabsData = [
@@ -19,6 +20,20 @@ const HomePage = () => {
     { label: "Most Recent", value: "most-recent" },
     { label: "Saved Jobs", value: "saved-jobs" },
   ];
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
+
+  const handleDrawerOpen = (job) => {
+    console.log("open")
+    setSelectedJob(job);
+    setDrawerOpen(true);
+   
+  };
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  };
+ 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
     const url = `/${activeTab}`;
@@ -47,8 +62,23 @@ const HomePage = () => {
           </AntTabs>
 
           {jobData.map((job) => (
-            <JobCard key={job.jobsId} {...job} />
-          ))}
+        <JobCard key={job.jobsId} {...job} onClick={() => handleDrawerOpen(job)} />
+      ))}
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={handleDrawerClose}
+        PaperProps={{
+            sx: { width: "77%",borderRadius: '16px',padding:'24px' }
+          }}
+       
+      >
+        <div>
+          {selectedJob && (
+            <JobDetailsDrower/>
+          )}
+        </div>
+      </Drawer>
         </StyledBox>
       </StyledFlex>
       <SideBar/>

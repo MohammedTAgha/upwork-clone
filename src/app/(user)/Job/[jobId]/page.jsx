@@ -23,7 +23,7 @@ const Job = ({params}) => {
       }}
       alignItems={"flex-start"}
     >
-    {jobData && jobData.length != 0? <JobPage job={jobData[0]}/> :<h3>no job</h3>}
+    {jobData && jobData.length != 0? <JobPage job={jobData[0]}/> :<h3>loading</h3>}
     </StyledPage>
   );
 };

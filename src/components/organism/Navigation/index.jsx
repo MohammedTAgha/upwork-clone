@@ -10,7 +10,7 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-
+import Link from 'next/link'
 // import logopng from 'upwork.png'
 const StyledNavigation = styled.nav`
   height:64px;
@@ -22,7 +22,7 @@ const StyledNavigation = styled.nav`
   padding: 4px 24px;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled.div`
   color: inherit;
   font-size:0.875rem;
   color: #000;
@@ -43,11 +43,12 @@ const Navigation = () => {
       <img  src='assets/images/upwork.png' width= '120px'  />
       
       <StyledFlex justifyContent='flex-start'  >
-
-      <NavLink href="/about">Find work</NavLink>
-      <NavLink href="/contact">My Jobs</NavLink>
-      <NavLink href="/contact">Reborts</NavLink>
-      <NavLink href="/contact">Messages</NavLink>
+      <Link href='/Home'>
+      <NavLink >Find work</NavLink>
+      </Link>
+      <NavLink >My Jobs</NavLink>
+      <NavLink >Reborts</NavLink>
+      <NavLink >Messages</NavLink>
       </StyledFlex>
       <StyledFlex justifyContent='flex-end'>
       <NavSearch/>

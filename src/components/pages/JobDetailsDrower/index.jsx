@@ -16,7 +16,7 @@ const JobDetailsDrower = ({ job }) => {
         }}
       >
         <ArrowBackIosIcon />
-        
+       
         <Box
           style={{
             flex: 1,
@@ -27,10 +27,12 @@ const JobDetailsDrower = ({ job }) => {
         >
           <Body hover>
             <OpenInNewIcon />
-             Open job in new window
+            <Link href={`/Job/${job.jobsId}`}>
+             Open job in new window 
+             </Link>
           </Body>
         </Box>
-        
+       
       </Box>
 
       <JobPage job={job} />

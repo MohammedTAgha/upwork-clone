@@ -56,7 +56,9 @@ const Navigation = () => {
      <NotificationsIcon/>
      <WidgetsIcon/>
      <NavigationIcon/>
+     <Link href='/Profile'>
      <Avatar size={'sm'}/>
+     </Link>
       </StyledFlex>
     </StyledNavigation>
   );

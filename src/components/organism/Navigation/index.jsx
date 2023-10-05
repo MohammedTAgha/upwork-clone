@@ -55,9 +55,6 @@ const Navigation = () => {
      <NotificationsIcon/>
      <WidgetsIcon/>
      <NavigationIcon/>
-
-     <Avatar size={'sm'}/>
-     <Avatar size={'sm'}/>
      <Avatar size={'sm'}/>
       </StyledFlex>
     </StyledNavigation>

@@ -12,7 +12,7 @@ import RssFeedIcon from '@mui/icons-material/RssFeed';
 import Typography from "@mui/material/Typography";
 import jobData from "@/db/jobs";
 import JobCard from "@/components/molecules/JopCard";
-
+import { useRouter } from 'next/router'
 
 const StyledSearchPageContainer=styled(Box)`
    display: flex;
@@ -63,7 +63,7 @@ const SearchComponent = () => (
     <Typography color='primary'>1500 found jobs </Typography>
     </Box>
     {jobData.map((job) => (
-        <JobCard key={job.jobsId} {...job} />
+        <JobCard key={job.jobsId} {...job} onClick={() => router.push('/about')} />
       ))}
   </Stack>
   
@@ -79,6 +79,7 @@ const SavedJobsComponent = () =>{
 }
 
 const SearchPage = () => {
+  const router = useRouter()
   const tabsData = [
     { label: "Search", value: "Search", component: SearchComponent },
     { label: "Saved Jobs", value: "saved-jobs", component: SavedJobsComponent },

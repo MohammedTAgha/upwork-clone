@@ -1,32 +1,32 @@
 "use client";
-import SideBar from './components/SideBar';
-import PageContainer from './components/PageContainer'
+import SideBar from "./components/SideBar";
+import PageContainer from "./components/PageContainer";
 import { Box, Stack, styled } from "@mui/material";
-import { StyledFlex,StyledBox,StyledSidebar } from "@/styles/common";
+import { StyledFlex, StyledBox, StyledSidebar } from "@/styles/common";
 import { AntTabs, AntTab } from "@/components/molecules/Tabs";
-import React, { useState } from "react";
-import Search from '../HomePage/components/molecules/SearchBar';
+import React, { useState ,useEffect  } from "react";
+import Search from "../HomePage/components/molecules/SearchBar";
 import Button from "@mui/material-next/Button";
-import FolderIcon from '@mui/icons-material/Folder';
-import RssFeedIcon from '@mui/icons-material/RssFeed';
+import FolderIcon from "@mui/icons-material/Folder";
+import RssFeedIcon from "@mui/icons-material/RssFeed";
 import Typography from "@mui/material/Typography";
 // import jobData from "@/db/jobs";
 import JobCard from "@/components/molecules/JopCard";
-import { useRouter } from 'next/router'
-import useJobData from '@/hooks/useApi';
-const StyledSearchPageContainer=styled(Box)`
-   display: flex;
-   margin:0 auto;
-   padding:16px 30px;
-   /* align-items:center; */
-   /* justify-content:center; */
+import useJobData from "@/hooks/useApi";
+import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation'
+const StyledSearchPageContainer = styled(Box)`
+  display: flex;
+  margin: 0 auto;
+  padding: 16px 30px;
+  /* align-items:center; */
+  /* justify-content:center; */
 
   @media (max-width: 1440px) {
-    width:1140px;
-
+    width: 1140px;
   }
   @media (max-width: 1024px) {
-    width:940px;
+    width: 940px;
   }
 
   @media (max-width: 900px) {
@@ -36,51 +36,96 @@ const StyledSearchPageContainer=styled(Box)`
   @media (max-width: 780px) {
     width: 95%;
   }
+`;
+import { SaveJobButtonStyle } from "@/components/pages/JobPage/style";
+const StyledSideBarContainer = styled(Box)`
+  width: 25%;
+  padding: 15px;
+`;
 
-`
-import {SaveJobButtonStyle} from '@/components/pages/JobPage/style';
-const StyledSideBarContainer=styled(Box)`
-  width:25%;
-  padding :15px;
-`
+const StyledSearchContainer = styled(Box)`
+  width: 75%;
+  padding: 15px;
+`;
+const SearchComponent = ({handleSearch }) => {
+ 
+  const searchParams = useSearchParams();
+const search = searchParams.get('query');
+const [searchQuery, setSearchQuery] = useState(search || 'seo');
+const [searchResult, setSearchResult] = useState(null); // New state for search results
 
-const StyledSearchContainer=styled(Box)`
-  width:75%;
-  padding :15px;
-`
-const SearchComponent = () => (
-  
-  <Stack sx={{padding:'18px 8px'}}>
-    <Box style={{display: 'flex',flexDirection:'row'}}>    
-    <Search width={'76%'} />
-    <Button  style={{...SaveJobButtonStyle , width:'130px' }} variant="outlined" >
-    <FolderIcon/>
-      Saved Jobs
-    </Button>
-    </Box>
-    <Box style={{display: 'flex',flexDirection:'row' , marginBottom:'14px'}}>
-    <RssFeedIcon/>
-    <Typography color='primary'>1500 found jobs </Typography>
-    </Box>
-    {/* {jobData.map((job) => (
-        <JobCard key={job.jobsId} {...job} onClick={() => router.push('/about')} />
-      ))} */}
-  </Stack>
-  
-)
-const SavedJobsComponent = () =>{
+// const { jobData, loading, error } = useJobData(searchQuery);
+
+useEffect(() => {
+  if (search) {
+    setSearchQuery(search);
+  }
+}, [search]);
+
+useEffect(() => {
+  const fetchData =  () => {
+    try {
+      const { jobData: newJobData, loading: newLoading, error: newError } =  useJobData(searchQuery);
+
+      // Update the search result state with the new data
+      setSearchResult({ jobData: newJobData, loading: newLoading, error: newError });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+}, [searchQuery]);
+
+
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchClick = () => {
+    handleSearch(searchQuery);
+  };
   return(
+    <Stack sx={{ padding: "18px 8px" }}>
+      <Box style={{ display: "flex", flexDirection: "row" }}>
+        <Search width={"76%"} handleInputChange={handleInputChange} handleSearch={handleSearchClick} />
+        <Button
+          style={{ ...SaveJobButtonStyle, width: "130px" }}
+          variant="outlined"
+        >
+          <FolderIcon />
+          Saved Jobs
+        </Button>
+      </Box>
+      <Box
+        style={{ display: "flex", flexDirection: "row", marginBottom: "14px" }}
+      >
+        <RssFeedIcon />
+        <Typography color="primary">1500 found jobs </Typography>
+      </Box>
+      {jobData && jobData.map((job) => (
+          <JobCard key={job.jobsId} {...job} onClick={() => router.push('/about')} />
+        ))}
+    </Stack>
+  );
+}
+const SavedJobsComponent = () => {
+  return (
     <>
-       {/* {jobData.map((job) => (
+      {/* {jobData.map((job) => (
         <JobCard key={job.jobsId} {...job} />
       ))} */}
     </>
-  )
-}
+  );
+};
 
 const SearchPage = () => {
-  
-  // const router = useRouter()
+  const handleSearch = (query) => {
+    // Perform the search action using the query
+    console.log('Search query:', query);
+    // Add your logic to handle the search action
+  };
+
   const tabsData = [
     { label: "Search", value: "Search", component: SearchComponent },
     { label: "Saved Jobs", value: "saved-jobs", component: SavedJobsComponent },
@@ -100,28 +145,25 @@ const SearchPage = () => {
 
   const SelectedComponent = getComponentForTab(activeTab);
 
-    return (
-      <>
+  return (
+    <>
       <StyledSearchPageContainer>
         <StyledSideBarContainer>
-        <SideBar/>
+          <SideBar />
         </StyledSideBarContainer>
         <StyledSearchContainer>
-        <StyledBox padding ='14px'>
-        <AntTabs value={activeTab} onChange={handleTabChange}>
-            {tabsData.map((tab) => (
-              <AntTab key={tab.value} value={tab.value} label={tab.label}  />
-            ))}
-          </AntTabs>
-          {SelectedComponent && <SelectedComponent />}     
-
-        </StyledBox>
+          <StyledBox padding="14px">
+            <AntTabs value={activeTab} onChange={handleTabChange}>
+              {tabsData.map((tab) => (
+                <AntTab key={tab.value} value={tab.value} label={tab.label} />
+              ))}
+            </AntTabs>
+            {SelectedComponent && <SelectedComponent  handleSearch={handleSearch} />}
+          </StyledBox>
         </StyledSearchContainer>
-        </StyledSearchPageContainer>
-      </>
-    );
-  }
-  
-  export default SearchPage;
-  
+      </StyledSearchPageContainer>
+    </>
+  );
+};
 
+export default SearchPage;

@@ -48,35 +48,16 @@ const StyledSearchContainer = styled(Box)`
   padding: 15px;
 `;
 const SearchComponent = ({handleSearch }) => {
- 
-  const searchParams = useSearchParams();
-const search = searchParams.get('query');
-const [searchQuery, setSearchQuery] = useState(search || 'seo');
-const [searchResult, setSearchResult] = useState(null); // New state for search results
-
-// const { jobData, loading, error } = useJobData(searchQuery);
-
-useEffect(() => {
-  if (search) {
-    setSearchQuery(search);
-  }
-}, [search]);
-
-useEffect(() => {
-  const fetchData =  () => {
-    try {
-      const { jobData: newJobData, loading: newLoading, error: newError } =  useJobData(searchQuery);
-
-      // Update the search result state with the new data
-      setSearchResult({ jobData: newJobData, loading: newLoading, error: newError });
-    } catch (error) {
-      console.error('Error fetching data:', error);
+  const searchParams = useSearchParams()
+  const search = searchParams.get('query')
+  const [searchQuery, setSearchQuery] = useState(search || 'seo');
+  const { jobData, loading, error } = useJobData(searchQuery);
+  console.log(search)
+  useEffect(() => {
+    if (search) {
+      setSearchQuery(search);
     }
-  };
-
-  fetchData();
-}, [searchQuery]);
-
+  }, [searchParams]);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -134,6 +115,7 @@ const SearchPage = () => {
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
+
     // const url = `/${activeTab}`;
     // window.history.pushState(null, null, url);
   };

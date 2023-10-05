@@ -10,10 +10,10 @@ import Button from "@mui/material-next/Button";
 import FolderIcon from '@mui/icons-material/Folder';
 import RssFeedIcon from '@mui/icons-material/RssFeed';
 import Typography from "@mui/material/Typography";
-import jobData from "@/db/jobs";
+// import jobData from "@/db/jobs";
 import JobCard from "@/components/molecules/JopCard";
 import { useRouter } from 'next/router'
-
+import useJobData from '@/hooks/useApi';
 const StyledSearchPageContainer=styled(Box)`
    display: flex;
    margin:0 auto;
@@ -62,23 +62,24 @@ const SearchComponent = () => (
     <RssFeedIcon/>
     <Typography color='primary'>1500 found jobs </Typography>
     </Box>
-    {jobData.map((job) => (
+    {/* {jobData.map((job) => (
         <JobCard key={job.jobsId} {...job} onClick={() => router.push('/about')} />
-      ))}
+      ))} */}
   </Stack>
   
 )
 const SavedJobsComponent = () =>{
   return(
     <>
-       {jobData.map((job) => (
+       {/* {jobData.map((job) => (
         <JobCard key={job.jobsId} {...job} />
-      ))}
+      ))} */}
     </>
   )
 }
 
 const SearchPage = () => {
+  
   const router = useRouter()
   const tabsData = [
     { label: "Search", value: "Search", component: SearchComponent },

@@ -8,12 +8,17 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from '@mui/material/Drawer';
 import { AntTabs, AntTab } from "@/components/molecules/Tabs";
-import jobData from "@/db/jobs";
+// import jobData from "@/db/jobs";
 import { Avatar } from "@mui/material";
 import colors from "@/constants/colors";
 import SideBar from './components/organisim/SideBar';
 import JobDetailsDrower from '@/components/pages/JobDetailsDrower'
+import useJobData from '@/hooks/useApi';
+import JobList from 'src/components/common/JobList/index';
 const HomePage = () => {
+  const { jobData, loading, error } = useJobData();
+
+  console.log(jobData)
   const [activeTab, setActiveTab] = useState("myFeed");
   const tabsData = [
     { label: "My Feed", value: "best-matches" },
@@ -36,8 +41,8 @@ const HomePage = () => {
  
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
-    const url = `/${activeTab}`;
-    window.history.pushState(null, null, url);
+    // const url = `/${activeTab}`;
+    // window.history.pushState(null, null, url);
   };
 
   return (
@@ -61,9 +66,10 @@ const HomePage = () => {
             ))}
           </AntTabs>
 
-          {jobData.map((job) => (
-        <JobCard key={job.jobsId} {...job} onClick={() => handleDrawerOpen(job)} />
-      ))}
+          {loading && <p>Loading...</p>}
+      {error && <p>Error fetching data: {error.message}</p>}
+      <JobList jobData={jobData} handleDrawerOpen={handleDrawerOpen} />
+
       <Drawer
         anchor="right"
         open={drawerOpen}

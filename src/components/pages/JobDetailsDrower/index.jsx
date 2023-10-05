@@ -4,6 +4,7 @@ import { Box } from "@mui/material";
 import { Body } from "@/components/atoms/Typography/";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import Link from "next/link";
 const JobDetailsDrower = ({ job }) => {
   return (
     <div>
@@ -15,6 +16,7 @@ const JobDetailsDrower = ({ job }) => {
         }}
       >
         <ArrowBackIosIcon />
+        
         <Box
           style={{
             flex: 1,
@@ -28,7 +30,9 @@ const JobDetailsDrower = ({ job }) => {
              Open job in new window
           </Body>
         </Box>
+        
       </Box>
+
       <JobPage job={job} />
     </div>
   );

@@ -1,10 +1,18 @@
 "use client";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import JobPage from "@/components/pages/JobPage";
 import styled from "styled-components";
-
+import useJobData from '@/hooks/useApi';
 import { StyledPage } from "@/styles/common";
 import { Typography } from "@mui/material";
-const Job = () => {
+const Job = ({params}) => {
+  // const router = useRouter();
+
+  console.log(params)
+  const { jobId } = params;
+  const { jobData, loading, error } = useJobData('',jobId);
+  console.log(jobData)
   return (
     <StyledPage
       col
@@ -15,7 +23,7 @@ const Job = () => {
       }}
       alignItems={"flex-start"}
     >
-    
+    {jobData && <JobPage job={jobData}/>}
     </StyledPage>
   );
 };

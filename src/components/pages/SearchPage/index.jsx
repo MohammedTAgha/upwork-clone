@@ -72,7 +72,7 @@ const SearchComponent = ({handleSearch }) => {
     <Stack sx={{ padding: "18px 8px" }}>
       <Box style={{ display: "flex", flexDirection: "row" }}>
         <Search width={"76%"} handleInputChange={handleInputChange} handleSearch={handleSearchClick} />
-        <Button
+        <Button onClick={()=>{ }}
           style={{ ...SaveJobButtonStyle, width: "130px" }}
           variant="outlined"
         >
@@ -93,11 +93,14 @@ const SearchComponent = ({handleSearch }) => {
   );
 }
 const SavedJobsComponent = () => {
+  const { savedJobs, addSavedJob, removeSavedJob } = useContext(SavedJobsContext);
+  console.log(savedJobs)
   return (
     <>
-      {/* {jobData.map((job) => (
-        <JobCard key={job.jobsId} {...job} />
-      ))} */}
+    <h3> saved</h3>
+      {savedJobs && savedJobs.map((job) => (
+        <JobCard key={job.jobsId} job={job} {...job} />
+      ))}
     </>
   );
 };

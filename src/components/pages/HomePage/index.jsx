@@ -4,7 +4,7 @@ import Search from "./components/molecules/SearchBar";
 import JobCard from "@/components/molecules/JopCard";
 import { StyledFlex,StyledBox,StyledSidebar } from "@/styles/common";
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState ,useContext  } from "react";
 import Box from "@mui/material/Box";
 import Drawer from '@mui/material/Drawer';
 import { AntTabs, AntTab } from "@/components/molecules/Tabs";
@@ -16,9 +16,11 @@ import JobDetailsDrower from '@/components/pages/JobDetailsDrower'
 import useJobData from '@/hooks/useApi';
 import JobList from 'src/components/common/JobList/index';
 import { useRouter } from 'next/navigation';
+import {SavedJobsContext } from '@/context/SavedJobsContext';
 
 
 const HomePage = () => {
+  const { savedJobs, addSavedJob, removeSavedJob } = useContext(SavedJobsContext);
   const [searchQuery, setSearchQuery] = useState('');
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -34,11 +36,10 @@ const HomePage = () => {
   const { jobData, loading, error } = useJobData();
  
   console.log(jobData)
-  const [activeTab, setActiveTab] = useState("myFeed");
+  const [activeTab, setActiveTab] = useState("My Feed");
   const tabsData = [
-    { label: "My Feed", value: "best-matches" },
-    { label: "Most Recent", value: "most-recent" },
-    { label: "Saved Jobs", value: "saved-jobs" },
+    { label: "My Feed", value: "My Feed" },
+    { label: "Saved Jobs", value: "Saved Jobs" },
   ];
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
@@ -56,8 +57,23 @@ const HomePage = () => {
  
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
+    console.log(activeTab)
     // const url = `/${activeTab}`;
     // window.history.pushState(null, null, url);
+  };
+
+  const getTabContent = (tabValue) => {
+
+    // Return content based on the selected tab
+    switch (tabValue) {
+      case 'My Feed':
+        return <JobList jobData={jobData} handleDrawerOpen={handleDrawerOpen} />;
+      case 'Saved Jobs':
+        // Add your saved jobs content component here
+        return <JobList jobData={savedJobs} handleDrawerOpen={handleDrawerOpen} />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -81,11 +97,9 @@ const HomePage = () => {
               <AntTab key={tab.value} value={tab.value} label={tab.label} />
             ))}
           </AntTabs>
-
-          {loading && <p>Loading...</p>}
-      {error && <p>Error fetching data: {error.message}</p>}
-      <JobList jobData={jobData} handleDrawerOpen={handleDrawerOpen} />
-
+          {/* Render content based on the selected tab */}
+          {getTabContent(activeTab)}
+         
       <Drawer
         anchor="right"
         open={drawerOpen}

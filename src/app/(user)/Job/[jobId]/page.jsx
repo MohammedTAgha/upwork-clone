@@ -23,7 +23,7 @@ const Job = ({params}) => {
       }}
       alignItems={"flex-start"}
     >
-    {jobData && <JobPage job={jobData}/>}
+    {jobData && <JobPage job={jobData[0]}/>}
     </StyledPage>
   );
 };

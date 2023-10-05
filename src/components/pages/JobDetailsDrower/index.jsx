@@ -29,7 +29,7 @@ const JobDetailsDrower = ({ job }) => {
           </Body>
         </Box>
       </Box>
-      <JobPage />
+      <JobPage job={job} />
     </div>
   );
 };

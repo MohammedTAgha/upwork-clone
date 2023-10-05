@@ -81,7 +81,7 @@ const HomePage = () => {
       >
         <div>
           {selectedJob && (
-            <JobDetailsDrower/>
+            <JobDetailsDrower job={selectedJob}/>
           )}
         </div>
       </Drawer>

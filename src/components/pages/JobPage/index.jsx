@@ -44,21 +44,31 @@ const RightBox = styled(Box)`
   padding: 20px;
 `;
 
-const JobPage = () => {
+const JobPage = ({ job }) => {
+  // Destructure job data
+  const {
+    title,
+    fixedPrice,
+    hourly,
+    description,
+    proposal,
+    spent,
+    location,
+    tags,
+    jobsId,
+    isVerified
+  } = job;
   return (
     <Container>
       <LeftBox>
-        <Heading>Configure NodeJS app with Google Auth</Heading>
+        <Heading>{title}</Heading>
         <Body hover>Full Stack Development</Body>
         <SmallText color={colors.gray600Color}>Posted 11 hours ago</SmallText>
         <IconWithText text={"Worldwide"} icon={<WhereToVoteIcon />} />
         <Divider width="100%" />
         <SectionContainer>
           <Body>
-            I need someone to help me configure an existing webapp using ReactJS
-            (frontend), NodeJS (backend), GoogleAPI (authentication) and MongoDB
-            (database). I'm trying to have it running in a VM (Azure) and to use
-            a domain name.
+           {description}
           </Body>
         </SectionContainer>
         <SectionContainer>
@@ -79,7 +89,7 @@ const JobPage = () => {
           <Stack direction="row" spacing={1}>
             <ListItem sx={{ maxWidth: "220px" }}>
               <SellIcon fontSize="small" sx={{ marginRight: "8px" }} />
-              <ListItemText primary="$100.00" secondary="Fixed-price" />
+              <ListItemText primary={fixedPrice} secondary="Fixed-price" />
             </ListItem>
 
             <ListItem sx={{ maxWidth: "220px" }}>
@@ -100,13 +110,13 @@ const JobPage = () => {
 
         <SectionContainer>
           <Typography variant="h6">Skills and Expertise</Typography>
-          <ChipsGrupe list={["react", "node js"]} />
+          <ChipsGrupe list={tags} />
         </SectionContainer>
 
         <SectionContainer>
           <Typography variant="h6">Activity on this job</Typography>
           <Typography variant="caption" display="block" gutterBottom>
-            Proposals: 15 to 20
+            {proposal}
           </Typography>
         </SectionContainer>
       </LeftBox>

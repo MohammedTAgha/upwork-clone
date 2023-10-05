@@ -80,7 +80,7 @@ const SavedJobsComponent = () =>{
 
 const SearchPage = () => {
   
-  const router = useRouter()
+  // const router = useRouter()
   const tabsData = [
     { label: "Search", value: "Search", component: SearchComponent },
     { label: "Saved Jobs", value: "saved-jobs", component: SavedJobsComponent },

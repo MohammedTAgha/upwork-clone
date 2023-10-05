@@ -9,7 +9,7 @@ const JobList = ({ jobData, handleDrawerOpen }) => {
   return (
     <div>
       {jobData.map((job) => (
-        <JobCard key={job.jobsId} {...job} onClick={() => handleDrawerOpen(job)} />
+        <JobCard key={job.jobsId} job={job} {...job} onClick={() => handleDrawerOpen(job)} />
       ))}
     </div>
   );

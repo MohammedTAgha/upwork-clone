@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{ useContext   }from "react";
 import styled from "styled-components";
 import { Avatar, Box, Stack, Divider, Slider } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
@@ -23,6 +23,8 @@ import Typography from "@mui/material/Typography";
 import ChipsGrupe from "@/components/molecules/ChipsGrupe";
 import Button from "@mui/material-next/Button";
 import { ApplyButtonStyle ,SaveJobButtonStyle } from "./style.js";
+import {SavedJobsContext } from '@/context/SavedJobsContext';
+
 // import Button from '@mui/material/Button';
 
 const Container = styled(Box)`
@@ -46,6 +48,23 @@ const RightBox = styled(Box)`
 
 const JobPage = ({ job }) => {
   // Destructure job data
+  const { savedJobs, addSavedJob, removeSavedJob } = useContext(SavedJobsContext);
+
+  // Example function to add a job to saved jobs
+  const handleSaveJob = (job) => {
+    console.log('saving job ')
+    addSavedJob(job);
+  };
+
+  // Example function to remove a job from saved jobs
+  const handleRemoveJob = (jobId) => {
+    removeSavedJob(jobId);
+  };
+
+  const showJobs =()=>{
+    console.log("saved Jobs")
+    console.log(savedJobs)
+  }
   const {
     title,
     fixedPrice,
@@ -122,8 +141,8 @@ const JobPage = ({ job }) => {
       </LeftBox>
       <RightBox>
       <SectionContainer>
-        <Button style={ApplyButtonStyle}>Apply now</Button>
-        <Button style={SaveJobButtonStyle} variant="outlined" >
+        <Button style={ApplyButtonStyle} onClick={showJobs}>Apply now</Button>
+        <Button style={SaveJobButtonStyle} onClick={()=>{handleSaveJob(job)}} variant="outlined" >
         <FavoriteBorderOutlinedIcon />
           Save Job
         </Button>

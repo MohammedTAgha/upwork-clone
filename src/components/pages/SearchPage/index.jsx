@@ -4,7 +4,7 @@ import PageContainer from "./components/PageContainer";
 import { Box, Stack, styled } from "@mui/material";
 import { StyledFlex, StyledBox, StyledSidebar } from "@/styles/common";
 import { AntTabs, AntTab } from "@/components/molecules/Tabs";
-import React, { useState ,useEffect  } from "react";
+import React, { useState ,useEffect,useContext   } from "react";
 import Search from "../HomePage/components/molecules/SearchBar";
 import Button from "@mui/material-next/Button";
 import FolderIcon from "@mui/icons-material/Folder";
@@ -15,6 +15,8 @@ import JobCard from "@/components/molecules/JopCard";
 import useJobData from "@/hooks/useApi";
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation'
+import {SavedJobsContext } from '@/context/SavedJobsContext';
+
 const StyledSearchPageContainer = styled(Box)`
   display: flex;
   margin: 0 auto;
